@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>QR Code Generator/Validator</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<h1>QR Code Generator/Validator</h1>
+	<form id="generate-form">
+		<label for="content">Content:</label>
+		<input type="text" id="content" name="content">
+		<button type="submit">Generate QR Code</button>
+	</form>
+	<div id="qr-code"></div>
+
+	<form id="validate-form">
+		<label for="qr-code-content">QR Code Content:</label>
+		<input type="text" id="qr-code-content" name="qr-code-content">
+		<button type="submit">Validate</button>
+	</form>
+	<div id="validation-result"></div>
+
+	<script src="qrcode.min.js"></script>
+	<script src="app.js"></script>
+</body>
+</html>
