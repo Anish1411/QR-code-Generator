@@ -1,0 +1,26 @@
+{
+  "name": "qr-code-generator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --config jest.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Anish1411/QR-code-Generator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Anish1411/QR-code-Generator/issues"
+  },
+  "homepage": "https://github.com/Anish1411/QR-code-Generator#readme",
+  "dependencies": {
+    "babel-jest": "^29.5.0",
+    "babel-preset-env": "^1.7.0",
+    "jest": "^29.5.0",
+    "qrcode": "^1.5.3",
+    "qrcode-generator": "^1.4.4"
+  }
+}
