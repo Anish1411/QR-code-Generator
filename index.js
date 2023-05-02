@@ -108,20 +108,20 @@
 
 // index.js
 // 3 pass and 3 fail
-const qrcode = require('qrcode');
+// const qrcode = require('qrcode');
 
-const generateQRCode = async (url) => {
-    try {
-        const qrCode = await qrcode.toDataURL(url);
-        console.log(qrCode);
-        return { qrCode, width: 256, height: 256 };
-    } catch (error) {
-        console.error(error);
-        throw new Error('Error generating QR code');
-    }
-};
+// const generateQRCode = async (url) => {
+//     try {
+//         const qrCode = await qrcode.toDataURL(url);
+//         console.log(qrCode);
+//         return { qrCode, width: 256, height: 256 };
+//     } catch (error) {
+//         console.error(error);
+//         throw new Error('Error generating QR code');
+//     }
+// };
 
-module.exports = { generateQRCode };
+// module.exports = { generateQRCode };
 
 //2 and 3rd test case passed
 // const qrcode = require('qrcode');
@@ -140,24 +140,6 @@ module.exports = { generateQRCode };
 
 
 
-// const qrcode = require('qrcode');
-
-// const generateQRCode = async (url, options = {}) => {
-//     const { border = 0, ...rest } = options;
-//     try {
-//         const qrCode = await qrcode.toDataURL(url, { margin: border, ...rest });
-//         console.log(qrCode);
-//         return { qrCode, width: 256, height: 256 };
-//     } catch (error) {
-//         console.error(error);
-//         throw new Error('Error generating QR code');
-//     }
-// };
-
-// module.exports = { generateQRCode };
-
-
-
 
 // no test pass
 // const generateQRCode = async (url, options = {}) => {
@@ -171,6 +153,84 @@ module.exports = { generateQRCode };
 //     }
 // };
 // module.exports = { generateQRCode };
+
+//3 test case run 1,2,4
+// const qrcode = require('qrcode');
+
+// const generateQRCode = async (url, options = {}) => {
+//     const { errorCorrectionLevel = 'M', ...rest } = options;
+//     try {
+//         const qrCode = await qrcode.toDataURL(url, { errorCorrectionLevel, ...rest });
+//         console.log(qrCode);
+//         return qrCode;
+//     } catch (error) {
+//         console.error(error);
+//         throw new Error('Error generating QR code');
+//     }
+// };
+
+// module.exports = { generateQRCode };
+
+// const qrcode = require('qrcode');
+
+// const generateQRCode = async (url, options = {}) => {
+//     const { errorCorrectionLevel = 'M', ...rest } = options;
+//     try {
+//         const qrCode = await qrcode.toDataURL(url, { errorCorrectionLevel, ...rest });
+//         console.log(qrCode);
+//         return { qrCode, width: 256, height: 256 };
+//     } catch (error) {
+//         console.error(error);
+//         throw new Error('Error generating QR code');
+//     }
+// };
+
+// module.exports = { generateQRCode };
+
+// const qrcode = require('qrcode');
+
+// const generateQRCode = async (url, options = {}) => {
+//     const { errorCorrectionLevel = 'M', ...rest } = options;
+//     try {
+//         const qrCode = await qrcode.toDataURL(url, { errorCorrectionLevel, ...rest });
+//         console.log(qrCode);
+//         const width = 256;
+//         const height = 256;
+//         return `${qrCode};${width};${height}`;
+//     } catch (error) {
+//         console.error(error);
+//         throw new Error('Error generating QR code');
+//     }
+// };
+
+// module.exports = { generateQRCode };
+
+//1 2 3
+const qrcode = require('qrcode');
+
+const generateQRCode = async (url, options = {}) => {
+    if (!url) {
+        throw new Error('Please provide a valid URL to generate QR code');
+    }
+
+    const { errorCorrectionLevel = 'M', width = 256, height = 256, color = {} } = options;
+
+    try {
+        const qrCode = await qrcode.toDataURL(url, {
+            errorCorrectionLevel,
+            width,
+            height,
+            color,
+        });
+        return { qrCode, width, height, color };
+    } catch (error) {
+        console.error(error);
+        throw new Error('Error generating QR code');
+    }
+};
+
+module.exports = { generateQRCode };
+
 
 
 
