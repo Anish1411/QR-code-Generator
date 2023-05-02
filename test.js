@@ -1,6 +1,7 @@
 const QRCode = require('qrcode');
-const { generateQRCode } = require("./index");
-// import { generateQRCode } from "./QR-code-Generator/index.js";
+const { generateQRCode } = require("./index.js");
+// import { generateQRCode } from "./index";
+// import { generateQRCode } from "./index.js";
 
 
 describe('QR code generator', () => {
@@ -11,7 +12,7 @@ describe('QR code generator', () => {
         expect(qrCode).toEqual(qrCodeData);
     });
 
-    test('generateQRCode throws an error for invalid input', async () => {
+    test('generateQRCode throws an error for invalid input', async () => {     //no test pass
         await expect(generateQRCode()).rejects.toThrow();
         await expect(generateQRCode('')).rejects.toThrow();
         await expect(generateQRCode(null)).rejects.toThrow();
