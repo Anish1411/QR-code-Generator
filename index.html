@@ -1,141 +1,45 @@
-<!-- <!DOCTYPE html>
-<html>
+<!doctype html>
 
 <head>
-	<meta charset="utf-8">
-	<title>QR Code Generator</title>
 	<link rel="stylesheet" href="style.css">
+	<title>JavaScript QR Code Generator</title>
 </head>
 
 <body>
-	<h1>QR Code Generator</h1>
-	<img src="./images/joe.png" alt="Your image description">
-	<div class="inp">
-		<label for="text-input">Enter Text:</label>
-		<input type="text" id="text-input">
+	<h3>QR Code Generator</h3>
+	<div><input id="qr-text" type="text" placeholder="Text to generate QR code" /></div>
+	<br />
+	<div>
+		<button class="qr-btn" onclick="generateQRCode()">Create QR Code</button>
 	</div>
-
-	<button id="generate-button">Generate QR Code</button>
+	<br />
+	<p id="qr-result">This is deault QR code:</p>
 	<canvas id="qr-code"></canvas>
-	<script src="index.js"></script>
-</body>
 
-</html> -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+	<script>
 
-<!-- index.html -->
+		var qr;
+		(function () {
+			qr = new QRious({
+				element: document.getElementById('qr-code'),
+				size: 200,
+				value: 'https://studytonight.com'
+			});
+		})();
 
-<!-- <!DOCTYPE html>
-<html>
-
-<head>
-	<title>QR Code Generator</title>
-	<link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-	<h1>QR Code Generator</h1>
-	<img src="./images/joe.png" alt="Your image description">
-	<div class="inp">
-		<label for="text-input">Enter Text:</label>
-		<input type="text" id="text-input">
-	</div>
-
-	<button id="generate-button">Generate QR Code</button>
-	<canvas id="qrcode"></canvas> -->
-
-<!-- <script>
-		const generateQRCodeButton = document.getElementById('generate-button');
-		const textInput = document.getElementById('text-input');
-		const qrcodeDiv = document.getElementById('qrcode');
-
-		generateQRCodeButton.addEventListener('click', async () => {
-			const text = textInput.value;
-			const qrCode = await generateQRCode(text);
-			const qrCodeImage = new Image();
-			qrCodeImage.src = qrCode;
-			qrcodeDiv.appendChild(qrCodeImage);
-		});
-	</script> -->
-
-<!-- </body>
-
-</html> -->
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width,
-						initial-scale=1.0" />
-	<title>QR Code Generator</title>
-	<style>
-		h1,
-		h3 {
-			color: green;
+		function generateQRCode() {
+			var qrtext = document.getElementById("qr-text").value;
+			document.getElementById("qr-result").innerHTML = "QR code for " + qrtext + ":";
+			alert(qrtext);
+			qr.set({
+				foreground: 'black',
+				size: 200,
+				value: qrtext
+			});
 		}
-
-		body,
-		header {
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
-		}
-	</style>
-
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js">
 	</script>
-</head>
 
-<body>
-	<header>
-		<h1>GeeksforGeeks</h1>
-		<h3>QR code generator using qrcode.js</h3>
-		<h3>Enter QR code content and generate QR</h3>
-	</header>
-	<main>
-		<form action="/" id="qr-generation-form">
-			<input type="text" name="qr-code-content" id="qr-content" value="" placeholder="Enter QR content"
-				autocomplete="off" />
-			<input type="submit" value="Generate QR Code" />
-		</form><br />
-		<div id="qr-code"></div>
-	</main>
 </body>
-<script>
-	let qrContentInput = document.getElementById("qr-content");
-	let qrGenerationForm =
-		document.getElementById("qr-generation-form");
-	let qrCode;
-
-	function generateQrCode(qrContent) {
-		return new QRCode("qr-code", {
-			text: qrContent,
-			width: 256,
-			height: 256,
-			colorDark: "#000000",
-			colorLight: "#ffffff",
-			correctLevel: QRCode.CorrectLevel.H,
-		});
-	}
-
-	// Event listener for form submit event
-	qrGenerationForm.addEventListener("submit", function (event) {
-		// Prevent form submission
-		event.preventDefault();
-		let qrContent = qrContentInput.value;
-		if (qrCode == null) {
-
-			// Generate code initially
-			qrCode = generateQrCode(qrContent);
-		} else {
-
-			// If code already generated then make
-			// again using same object
-			qrCode.makeCode(qrContent);
-		}
-	});
-</script>
 
 </html>
