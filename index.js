@@ -16,6 +16,8 @@ const generateQRCode = async (url, options = {}) => {
             color,
         });
         return { qrCode, width, height, color };
+        // return { qrCode, width };
+        // return { width };
     } catch (error) {
         console.error(error);
         throw new Error('Error generating QR code');
